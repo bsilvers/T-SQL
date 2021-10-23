@@ -1,5 +1,8 @@
 use [Udemy70-461]
-
+/*
+70-461 Session 3: Querying Microsoft SQL Server (T-SQL)
+Section  2: Objective 4 - Create and Modify constraints
+*/
 go
 
 select *
@@ -47,12 +50,34 @@ rollback tran
 
 commit tran
 
+select * from tbltransaction
+
+
 alter table tblTransaction 
 add constraint unqTransaction UNIQUE(Amount, DateOfTransaction, EmployeeNumber)
 
 
+delete from tblTransaction where employeenumber = 131
+
+insert into tblTransaction
+values(1,'2021-10-23',131)
+--,(1,'2021-10-23',131)
+
+insert into tblTransaction
+values(1,'2021-10-23',131)
 
 
+alter table tblTransaction 
+drop constraint unqTransaction
+
+
+create table tblTransaction2
+(amount smallmoney not null,
+DateOfTransaction smalldatetime not null,
+EmployeeNumber int not null,
+CONSTRAINT unqTransaction2 UNIQUE(Amount, DateOfTransaction,EmployeeNumber))
+
+drop table tblTransaction2
 
 
 
