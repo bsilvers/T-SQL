@@ -1,3 +1,5 @@
+use [70-461]
+
 -- Creating and populating tblEmployee
 
 create table [dbo].[tblEmployee] ([EmployeeNumber] int NOT NULL, [EmployeeFirstName] varchar(50) NOT NULL, [EmployeeMiddleName] varchar(50) NULL, [EmployeeLastName] varchar(50) NOT NULL, [EmployeeGovernmentID] char(10) NOT NULL, [DateOfBirth] date NOT NULL, [Department] varchar(19) NULL)

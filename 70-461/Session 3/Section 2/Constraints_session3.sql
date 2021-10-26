@@ -10,6 +10,33 @@ https://docs.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver15
 */
 go
 
+select * from tblEmployee
+
+select EmployeeNumber , count(*)
+from tblEmployee
+group by EmployeeNumber
+having count(*) > 1
+
+select EmployeeGovernmentID , count(*)
+from tblEmployee
+group by EmployeeGovernmentID
+having count(*) > 1
+
+
+select * from tblEmployee where EmployeeNumber = 131
+
+begin tran
+
+	insert into tblEmployee(EmployeeNumber, EmployeeFirstName, EmployeeMiddleName, EmployeeLastName, EmployeeGovernmentID, DateOfBirth, Department)
+	VALUES('123', 'FirstName', 'MiddleName', 'LastName', '123435', '1985-01-01','Customer Relations')
+
+	select * from tblEmployee where EmployeeNumber = 123
+
+rollback tran
+
+select * from tblTransaction
+
+
 select *
 FROM tbltransaction t
 inner join tblEmployee e on t.EmployeeNumber = e.EmployeeNumber
@@ -27,9 +54,10 @@ select *
 from tblDepartment
 
 
-/* Constraints */
-
--- Unique Constraints
+/* Constraints 
+ Unique Constraints
+https://docs.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver15
+*/
 
 
 alter table tblEmployee 
@@ -42,6 +70,10 @@ having count(EmployeeGovernmentID) > 1
 
 
 select * from tblEmployee where EmployeeGovernmentID in ('TX593671R ')
+
+	insert into tblEmployee(EmployeeNumber, EmployeeFirstName, EmployeeMiddleName, EmployeeLastName, EmployeeGovernmentID, DateOfBirth, Department)
+	VALUES('123', 'FirstName', 'MiddleName', 'LastName', 'TX593671R ', '1985-01-01','Customer Relations')
+
 
 begin tran
 delete from tblEmployee
